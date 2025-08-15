@@ -250,7 +250,7 @@ class ConfirmView(View):
                     f.write('')
                     
                 embed = discord.Embed(
-                    title=" All VPS Instances Deleted",
+                    title=" All VM Deleted",
                     description=f"Successfully deleted {deleted_count} VPS instances.",
                     color=0x2400ff
                 )
@@ -314,7 +314,7 @@ class ConfirmView(View):
 @bot.event
 async def on_ready():
     change_status.start()
-    print(f'🚀 Bot is ready. Logged in as {bot.user}')
+    print(f'🚀 LP NODES BOT IS DONE {bot.user}')
     await bot.tree.sync()
 
 @tasks.loop(seconds=5)
@@ -327,7 +327,7 @@ async def change_status():
         else:
             instance_count = 0
 
-        status = f"🔮 Watching  Over {instance_count} VM's"
+        status = f"🔮 Watching LP NODES {instance_count} VM's"
         await bot.change_presence(activity=discord.Game(name=status))
     except Exception as e:
         print(f"Failed to update status: {e}")
