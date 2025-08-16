@@ -250,7 +250,7 @@ class ConfirmView(View):
                     f.write('')
                     
                 embed = discord.Embed(
-                    title=" All VPS Instances Deleted",
+                    title=" All VM Deleted",
                     description=f"Successfully deleted {deleted_count} VPS instances.",
                     color=0x2400ff
                 )
@@ -314,7 +314,7 @@ class ConfirmView(View):
 @bot.event
 async def on_ready():
     change_status.start()
-    print(f'🚀 Bot is ready. Logged in as {bot.user}')
+    print(f'🚀 LP NODES BOT IS DONE {bot.user}')
     await bot.tree.sync()
 
 @tasks.loop(seconds=5)
@@ -327,7 +327,7 @@ async def change_status():
         else:
             instance_count = 0
 
-        status = f"🔮 Watching  Over {instance_count} VM's"
+        status = f"🔮 Watching LP NODES {instance_count} VM's"
         await bot.change_presence(activity=discord.Game(name=status))
     except Exception as e:
         print(f"Failed to update status: {e}")
@@ -837,8 +837,8 @@ async def port_forward_website(interaction: discord.Interaction, container_name:
 
 @bot.tree.command(name="deploy", description="🚀 Admin: Deploy a new VPS instance")
 @app_commands.describe(
-    ram="RAM allocation in GB (max 100gb)",
-    cpu="CPU cores (max 24)",
+    ram="RAM allocation in GB (max 1000000gb)",
+    cpu="CPU cores (max 240)",
     target_user="Discord user ID to assign the VPS to",
     container_name="Custom container name (default: auto-generated)",
     expiry="Time until expiry (e.g. 1d, 2h, 30m, 45s, 1y, 3M)"
@@ -883,8 +883,8 @@ async def deploy(
     
     # Show OS selection dropdown
     embed = discord.Embed(
-        title="**🖥️ Select Operating System**",
-        description="** 🔍 Please select the operating system for your VPS instance **",
+        title="**🖥️ Select Operating System for your Vm**",
+        description="** 🔍 Please select the operating system for your VPS Also it save on proxmox **",
         color=0x2400ff
     )
     
@@ -962,7 +962,7 @@ async def deploy_with_os(interaction, os_type, ram, cpu, user_id, user, containe
         
         # Create a DM embed with detailed information
         dm_embed = discord.Embed(
-            description=f"**✅ VPS created successfully. Check your DM for details.**",
+            description=f"**😉 VPS created successfully. Check your DM for details.**",
             color=0x2400ff
         )
         
@@ -984,8 +984,8 @@ async def deploy_with_os(interaction, os_type, ram, cpu, user_id, user, containe
             
             # Public success message
             success_embed = discord.Embed(
-                title="**⛈️ VM WAS CREATE**",
-                description=f"** 🎉 VPS instance has been created for <@{user_id}>. They should check their DMs for connection details.**",
+                title="**⛈️ VM WAS CREATE YOUR POWERED BY LP NODES**",
+                description=f"** 🎉 VPS has been created for <@{user_id}>. They should check their DMs for connection details.**",
                 color=0x2400ff
             )
             await interaction.followup.send(embed=success_embed)
@@ -1104,7 +1104,7 @@ async def tips_command(interaction: discord.Interaction):
 @app_commands.describe(container_name="The name of your container")
 async def delete_server(interaction: discord.Interaction, container_name: str):
     user = str(interaction.user)
-    container_id = get_container_id_from_database(user, container_name)
+    container_id = get_vps_id_from_database(user, container_name)
 
     if not container_id:
         embed = discord.Embed(
@@ -1118,7 +1118,7 @@ async def delete_server(interaction: discord.Interaction, container_name: str):
     # Create confirmation dialog
     confirm_embed = discord.Embed(
         title="**⚠️ Confirm Deletion**",
-        description=f"**Are you sure you want to delete VPS instance `{container_name}`? This action cannot be undone.**",
+        description=f"**Are you sure you want to delete VPS if been delete from proxmox `{container_name}`? This action cannot be undone.**",
         color=0x2400ff
     )
     
@@ -1159,17 +1159,17 @@ async def list_servers(interaction: discord.Interaction):
 
     if not servers:
         embed = discord.Embed(
-            title="**📋 Your VPS Instances",
+            title="**📋 Your VM",
             description="**You don't have any VPS instances. Use `/deploy` to create one!**",
-            color=0x00aaff
+            color=0x2400ff
         )
         await interaction.followup.send(embed=embed)
         return
 
     embed = discord.Embed(
-        title="**📋 Your VPS Instances**",
+        title="**📋 Your VM**",
         description=f"**You have {len(servers)} VPS instance(s)**",
-        color=0x00aaff
+        color=0x2400ff
     )
 
     for server in servers:
@@ -1233,7 +1233,7 @@ async def sendvps(
     if interaction.user.id not in ADMIN_IDS:
         embed = discord.Embed(
             title="❌ Access Denied",
-            description="Only Mrsdbd admins can use this command.",
+            description="Only admins can use this command.",
             color=0xff0000
         )
         await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -1294,9 +1294,9 @@ async def restart(interaction: discord.Interaction, container_name: str):
 async def ping(interaction: discord.Interaction):
     latency = round(bot.latency * 1000)
     embed = discord.Embed(
-        title="🏓 Pong!",
+        title="❤️ PING!",
         description=f"Latency: {latency}ms",
-        color=0x00ff00
+        color=0x2400ff
     )
     await interaction.response.send_message(embed=embed)
 
