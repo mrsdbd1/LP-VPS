@@ -327,7 +327,7 @@ async def change_status():
         else:
             instance_count = 0
 
-        status = f"🔮 Watching LP NODES {instance_count} VM's"
+        status = f"LP NODES {instance_count} VPS"
         await bot.change_presence(activity=discord.Game(name=status))
     except Exception as e:
         print(f"Failed to update status: {e}")
