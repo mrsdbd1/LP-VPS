@@ -19,14 +19,14 @@ from datetime import datetime, timedelta
 from typing import Optional, Literal
 
 TOKEN = ''
-RAM_LIMIT = '64g'
+RAM_LIMIT = '4g'
 SERVER_LIMIT = 1
 database_file = 'database.txt'
 PUBLIC_IP = '138.68.79.95'
-YOUR_BOT_ID = '1396853238350876682'
+YOUR_BOT_ID = '1386674041351442512'
 
 # Admin user IDs - add your admin user IDs here
-ADMIN_IDS = [1258646055860568094,1159037240622723092]  # Replace with actual admin IDs
+ADMIN_IDS = [1338956004192157758]  # Replace with actual admin IDs
 
 intents = discord.Intents.default()
 intents.messages = False
@@ -2035,9 +2035,9 @@ async def manage(interaction: discord.Interaction):
 @bot.tree.command(name="status", description="LD NODE VM status")
 async def status_cmd(interaction: discord.Interaction):
     await interaction.response.defer(ephemeral=True)
-    ip = "45.184.85.20"  # Replace with function if dynamic
+    ip = "0.0.0.0"  # Replace with function if dynamic
     embed = discord.Embed(
-        title="LD NODE VM",
+        title="LP NODES VM",
         description=(
             f"**Node:** 🟢 Online\n"
             f"**Up:** 24h\n"
