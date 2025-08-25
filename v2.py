@@ -17,13 +17,13 @@ from datetime import datetime, timedelta
 from typing import Optional, Literal
 
 TOKEN = ''
-RAM_LIMIT = '6g'
-SERVER_LIMIT = 1
+RAM_LIMIT = '64g'
+SERVER_LIMIT = 1000
 database_file = 'database.txt'
 PUBLIC_IP = '138.68.79.95'
 
 # Admin user IDs - add your admin user IDs here
-ADMIN_IDS = [1368602087520473140]  # Replace with actual admin IDs
+ADMIN_IDS = [1384852296881537064]  # Replace with actual admin IDs
 
 intents = discord.Intents.default()
 intents.messages = False
@@ -1233,7 +1233,7 @@ async def sendvps(
     if interaction.user.id not in ADMIN_IDS:
         embed = discord.Embed(
             title="❌ Access Denied",
-            description="Only Mrsdbd admins can use this command.",
+            description="Only deathsaif admins can use this command.",
             color=0xff0000
         )
         await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -1414,4 +1414,4 @@ async def help_command(interaction: discord.Interaction):
     
     await interaction.response.send_message(embed=embed)
 
-bot.run(TOKEN)
+bot.run(MTM5NzgyOTk1NTk1MzQ5NjEwNA.GtqEJF._ubTBv6ZvjxGgOCXwW5CPgKH2OaDCaDD9dPVMM)
